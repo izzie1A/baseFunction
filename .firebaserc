@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "functioncollection-a73de": {
+      "hosting": {
+        "baseFunction": [
+          "functioncollection-a73de"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "functioncollection-a73de"
+  }
+}
