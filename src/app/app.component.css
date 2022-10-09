@@ -1,0 +1,4 @@
+.appcomponent{
+    display: grid;
+    grid-row: 30% 40% 30% 30;
+}

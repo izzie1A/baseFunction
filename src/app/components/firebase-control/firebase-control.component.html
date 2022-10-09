@@ -1,6 +1,21 @@
-<p>firebase-control works!</p>
-<ul>
-    <li class="text" *ngFor="let item of testItems | async">
-      {{item.name}}
-    </li>
-</ul>
+<div class="kcard kround kflex">
+  <p>firebase-control works!</p>
+
+</div>
+<button (click)="saveDoc()">create null</button>
+<div class="kcard kround klist ">
+  <div class="">
+    <ul>
+      <li (click)="selectDocuemnt(item)" *ngFor="let item of itemList | async; let i = index">
+        {{i}}: {{item.name}}: {{item.title}}
+      </li>
+    </ul>
+  </div>
+  <div class="kcard kround">
+    {{docSelector.uid}}
+    {{docSelector.title}}
+    {{docSelector.name}}
+    {{docSelector.content}}
+    {{docSelector.timeStamp}}
+  </div>
+</div>

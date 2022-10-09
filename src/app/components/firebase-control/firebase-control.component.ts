@@ -1,27 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
-export interface Item { name: string; }
 
 @Component({
   selector: 'app-firebase-control',
   templateUrl: './firebase-control.component.html',
   styleUrls: ['./firebase-control.component.css']
 })
-export class FirebaseControlComponent implements OnInit {
-  testItems: Observable<any[]>;
-  constructor(private firebaseService:FirebaseService) {
-    this.testItems = firebaseService.getValueChange();
+export class FirebaseControlComponent {
+  itemList?: Observable<any[]>;
+  collectionDir?: any;
+  docSelector?: any;
+
+  constructor(public firebaseService:FirebaseService) {
+    this.collectionDir = 'root';
+    this.selectCollection(this.collectionDir);
+    this.docSelector = {};
   }
 
-  getFirestore(input:string){
-    return this.firebaseService.getValueChange(input);
+  onKey(event:any) {const inputValue = event.target.value;}
+
+  selectCollection(input:any){
+    this.itemList = this.getCollection(input);
+  }
+  selectDocuemnt(input:any){
+    this.docSelector = input;
+    this.firebaseService.getDoc(input);
+  }
+  getCollection(input?:any){
+    return this.firebaseService.getCollection(input);
+  }
+  saveDoc(input?:any){
+    if(input!=undefined){
+      this.firebaseService.writeDoc(this.collectionDir,input);
+    }else{
+      this.firebaseService.addDoc(this.collectionDir, { 
+        uid: 'undefind',
+        name: 'undefind',
+        title: 'undefind',
+        content:'undefind',
+       });
+    }
+  }
+  writeDoc(){
+
+  }
+  deleteDoc(){
+
   }
 
-
-  ngOnInit(): void {
-  }
 
 }
