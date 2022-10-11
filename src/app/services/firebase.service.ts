@@ -28,31 +28,31 @@ export class FirebaseService {
     }
   }
   test(dir:string) {
-    let itemsCollection = this.firestore.collection(dir).valueChanges().subscribe(ref => {
-      console.log(ref);
-    });
-    console.log(itemsCollection);
+    // let itemsCollection = this.firestore.collection(dir).valueChanges().subscribe(ref => {
+    // });
+    // console.log(itemsCollection);
     
-    let itemsCollection2 = this.firestore.collection(dir).valueChanges().subscribe(ref => {
-      console.log(ref);
-    });
-    console.log(itemsCollection2);
+    // let array = new Array();
+    // let itemsCollection2 = this.firestore.collection(dir).valueChanges().subscribe(ref => {
+    //   array= ref;
+    // });
+    // console.log(array);
     
-    const nums = of(1, 2, 3);
-    const squareValues = map((val: number) => val * val);
-    const squaredNums = squareValues(nums);
-    squaredNums.subscribe(x => console.log(x));
-
-    return this.firestore.collection(dir).valueChanges();;
+    // return this.firestore.collection(dir).valueChanges()
+    if(dir!==undefined){
+      return this.firestore.collection(dir).valueChanges();
+    }else{
+      return this.firestore.collection('todo').valueChanges();
+    }
   }
   getDoc(dir:string) {
-    let itemDoc = this.firestore.doc<Item>(dir);
-    console.log(itemDoc);
-    return itemDoc.valueChanges();
+    console.log(dir)
+    return  this.firestore.doc<Item>(dir);
   }
   addDoc(dir:string,item: Item) {
     const id = this.firestore.createId();
     item.uid = id;
+    alert( Date.now().toString())
     item.timeStamp = Date.now().toString();
     const itemsCollection = this.firestore.collection<Item>(dir.toString());
     itemsCollection.doc(id).set(item);
@@ -61,12 +61,9 @@ export class FirebaseService {
     const doc = this.firestore.doc<Item>(dir.toString());
     console.log(doc.update(item));
   }
-
   query(){
-
   }
   delete(){
-
   }
 
 

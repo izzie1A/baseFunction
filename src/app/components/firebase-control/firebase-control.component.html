@@ -1,21 +1,29 @@
 <div class="kcard kround kflex">
   <p>firebase-control works!</p>
-
 </div>
-<button (click)="saveDoc()">create null</button>
+
+<div class="kcard kround klist">
+  <button (click)="saveDoc()">create null</button>
+  <input>
+</div>
+
+
+
 <div class="kcard kround klist ">
-  <div class="">
-    <ul>
-      <li (click)="selectDocuemnt(item)" *ngFor="let item of itemList | async; let i = index">
-        {{i}}: {{item.name}}: {{item.title}}
-      </li>
-    </ul>
+  <div class="kblock">
+      <div class="kbar" (click)="selectDocuemnt(item)" *ngFor="let item of curCollection | async; let i = index">
+        {{i}}: {{item.name}}
+      </div>
   </div>
-  <div class="kcard kround">
-    {{docSelector.uid}}
-    {{docSelector.title}}
-    {{docSelector.name}}
-    {{docSelector.content}}
-    {{docSelector.timeStamp}}
+  <div class="kblock kround kvtable">
+    <div class="secColor kindent ">
+      <div>{{docSelector.title}}:{{docSelector.timeStamp}}</div>
+    </div>
+    <div class="priColor kindent kvflex">
+      <div>{{docSelector.timeStamp}}</div>
+      <div>{{docSelector.uid}}</div>
+      <div>{{docSelector.name}}</div>
+      <div>{{docSelector.content}}</div>
+    </div>
   </div>
 </div>

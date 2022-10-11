@@ -19,6 +19,13 @@
     -ms-user-select: none;
     user-select: none; 
   }
+
+  .priColor{
+    background-color: var(--bg-secondary);
+  }
+  .secColor{
+    background-color: var( --bg-primary);
+  }
   
   :root {
     margin: 0;
@@ -99,11 +106,10 @@
   
   }
   .kbar{ 
-    min-height: 3vw;
-    font-size: 2vh;
+    min-height: 3vh;
     overflow: hidden;
     background-color: var(--white);
-    box-shadow:var(--shadow2);
+    box-shadow:var(--shadowMin);
     margin:0.25%;
   }
   
@@ -205,36 +211,34 @@
   .kvflex{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
     padding:0.5%;
-    overflow:scroll;
   }
   .ktable{
     display: grid;
     grid-template-columns: 60% 40%;
     justify-content: space-evenly;
-    overflow-x: scroll;
   }
   .kvtable{
     display: grid;
-    grid-template-rows: 30% 70%;
-    /* justify-content: space-evenly; */
-    overflow-x: scroll;
+    grid-template-rows: 20% 80%;
   }
   .kgrid{
     display: grid;
-    grid-template-columns: 30% 30% 30%;
+    grid-template-columns: 50% 50%;
     justify-content: space-evenly;
-    overflow: hidden;
   }
   .klist{
     display: grid;
     grid-template-columns: 30% 70%;
-    overflow-y: scroll;
     max-height: inherit;
   }
-  
+  .kindent{
+    padding: 2.5%;
+  }
+  .kbado{
+    margin: 2.5%;
+  }
+
   .kimg{
     width: -webkit-fill-available;
     border-radius: 1vmin;
@@ -275,12 +279,12 @@
   
   /*  */
   html {
-    font-size: 1.5vw;
+    font-size: 1.5vmin;
   }
   @media screen and (min-width: 320px) {
     html {
       /* font-size: calc(16px + 6 * ((100vw - 320px) / 680)); */
-      font-size: 3vw;
+      font-size: 3vmin;
     }
   }
   @media screen and (min-width: 1000px) {
@@ -297,7 +301,7 @@
   
   
   
-  /* css debug mode */
+  /* css debug mode 
   
   
   
@@ -337,4 +341,4 @@
       background-color: rgba(0, 0, 255, .1);
   } 
   
-  
+  */

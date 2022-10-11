@@ -9,24 +9,35 @@ import { Observable } from 'rxjs';
   styleUrls: ['./firebase-control.component.css']
 })
 export class FirebaseControlComponent {
-  itemList?: Observable<any[]>;
+  curCollection?: Observable<any[]>;
   collectionDir?: any;
   docSelector?: any;
 
   constructor(public firebaseService:FirebaseService) {
     this.collectionDir = 'root';
-    this.selectCollection(this.collectionDir);
     this.docSelector = {};
+    this.selectCollection(this.collectionDir);
+    this.ttest();
+    this.firebaseService.getDoc('todo/6bXzb9DG9apl1YF0mLob');
+  }
+  
+  ttest(){
+    let array = new Array();
+    this.curCollection = this.firebaseService.test('root');
+    this.curCollection.subscribe((ref: any) => {
+      console.log(ref);
+      array = ref;
+      console.log('meow');
+    });
   }
 
   onKey(event:any) {const inputValue = event.target.value;}
 
   selectCollection(input:any){
-    this.itemList = this.getCollection(input);
+    this.curCollection = this.getCollection(input);
   }
   selectDocuemnt(input:any){
-    this.docSelector = input;
-    this.firebaseService.getDoc(input);
+    this.docSelector = this.firebaseService.getDoc(input).ref;
   }
   getCollection(input?:any){
     return this.firebaseService.getCollection(input);
