@@ -10,8 +10,10 @@ import { Observable } from 'rxjs';
 })
 export class FirebaseControlComponent {
   curCollection?: Observable<any[]>;
+  curCollection2?: any[];
   collectionDir?: any;
   docSelector?: any;
+  user?: any;
 
   constructor(public firebaseService:FirebaseService) {
     this.collectionDir = 'root';
@@ -19,6 +21,13 @@ export class FirebaseControlComponent {
     this.selectCollection(this.collectionDir);
     this.ttest();
     this.firebaseService.getDoc('todo/6bXzb9DG9apl1YF0mLob');
+  }
+
+  heroes = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
+  addHero(newHero: string) {
+    if (newHero) {
+      this.heroes.push(newHero);
+    }
   }
   
   ttest(){
@@ -38,6 +47,7 @@ export class FirebaseControlComponent {
   }
   selectDocuemnt(input:any){
     this.docSelector = this.firebaseService.getDoc(input).ref;
+    console.log(this.docSelector  )
   }
   getCollection(input?:any){
     return this.firebaseService.getCollection(input);
