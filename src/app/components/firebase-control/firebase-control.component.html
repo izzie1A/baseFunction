@@ -16,15 +16,15 @@
 
 
 <div class="kcard kround kvtable secColor">
-  <div class="white">testtest</div>
+  <div class="white kindent">testtest</div>
   <div class="klist ">
-    <div class="kcard kround">
+    <div class="kblock ">
       <div class="kbar kindent" (click)="selectDocuemnt(item)"
         *ngFor="let item of curCollection | async; let i = index">
         {{i}}- {{item.name}}
       </div>
     </div>
-    <div class="kcard kround kvtable">
+    <div class="kblock kround kvtable kbado">
       <div class="white kindent ">
         <div>{{docSelector.title}}:{{docSelector.timeStamp}}</div>
       </div>
