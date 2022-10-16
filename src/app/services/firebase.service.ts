@@ -20,33 +20,14 @@ export class FirebaseService {
   constructor(private firestore: AngularFirestore) {
   }
 
-  getCollection(input?:string){
-    if(input!==undefined){
-      return this.firestore.collection(input).valueChanges();
-    }else{
-      return this.firestore.collection('todo').valueChanges();
-    }
-  }
-  test(dir:string) {
-    // let itemsCollection = this.firestore.collection(dir).valueChanges().subscribe(ref => {
-    // });
-    // console.log(itemsCollection);
-    
-    // let array = new Array();
-    // let itemsCollection2 = this.firestore.collection(dir).valueChanges().subscribe(ref => {
-    //   array= ref;
-    // });
-    // console.log(array);
-    
-    // return this.firestore.collection(dir).valueChanges()
+  getCollection(dir?:string){
     if(dir!==undefined){
       return this.firestore.collection(dir).valueChanges();
     }else{
-      return this.firestore.collection('todo').valueChanges();
+      return this.firestore.collection('/root').valueChanges();
     }
   }
   getDoc(dir:string) {
-    console.log(dir)
     return  this.firestore.doc<Item>(dir);
   }
   addDoc(dir:string,item: Item) {

@@ -3,70 +3,42 @@
 </div>
 
 <div class="kcard kround klist">
-  <button type="button" (click)="selectCollection(collDir.value)">Save</button>
-  <input #collDir (keyup.enter)="selectCollection(collDir.value)" value="{{collectionDir}}">
-  <button (click)="saveDoc()">saveFile</button>
-  <div class=" secColor kindent kvflex">
-    <div *ngFor="let hero of heroes">{{hero}}</div>
-    <div class="kvflex">
-      <button (click)="addInput(inputKey.value,inputValue.value)">+</button>
-      <div class="klist">
-        <input #inputKey>
-        <input #inputValue>
-      </div>
-    </div>
+  <button  (click)="selectCollection(test.value)">{{collectionDir}}</button>
+  <div class=" secColor kbado ktable">
+    <input #test>
+    <button>search</button>
+  </div>
+  <div>-</div>
+  <div class="kcard kround kindent">
+    <div *ngFor="let item of curCollection | async; let i = index">{{i}}- {{item.name}}></div>
   </div>
 </div>
 
-<div class="kcard kround klist">
-  <div>gap</div>
-  <div>test</div>
-  <button (click)="saveDoc()">saveFile</button>
-  <div class=" secColor kindent kvflex">
-    <div *ngFor="let hero of heroes">
-      <div>{{hero}}</div>
-      <div class="klist"> <input #inputKey> <input #inputValue></div>
+<div class="kcard kround kvtable priColor kratioh">
+  <div class="secColor klist klist">
+    <div class=" kcenterDeatil ">{{collectionDirInput.value}}</div>
+    <div class=" ktable">
+      <input #collectionDirInput value="users">
+      <button type="button" class="kclick kround kbado " (click)="selectCollection(collectionDirInput.value)">Search</button>
     </div>
   </div>
-</div>
-
-<div class="kcard kround klist">
-  <div>gap</div>
-  <div>test</div>
-  <button (click)="saveDoc()">saveFile</button>
-  <div class=" secColor kindent kvflex">
-    <div *ngFor="let hero of docSelector| async">
-      <div>{{hero}}</div>
-      <div class="klist"> <input #inputKey> <input #inputValue></div>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="kcard kround kvtable secColor kratioh">
-  <div class="white kindent">testtest</div>
   <div class="klist ">
     <div class="kblock ">
-      <div class="kbar kindent" (click)="selectDocuemnt(item)"*ngFor="let item of curCollection | async; let i = index">
+      <div class="kbar kindent" (click)="selectDocuemnt(item)"
+        *ngFor="let item of curCollection | async; let i = index">
         {{i}}- {{item.name}}
       </div>
     </div>
-    <div class="kblock kround kvtable kbado">
-      <div class="white kindent ">
+    <div class="kcard kround kvtable kbado">
+      <div class="secColor kindent" *ngIf="docSelector.name!!">
         <div>{{docSelector.title}}:{{docSelector.timeStamp}}</div>
       </div>
-      <div class=" secColor kindent kvflex">
-        <div>{{docSelector.timeStamp}}</div>
-        <div>{{docSelector.uid}}</div>
-        <div>{{docSelector.name}}</div>
-        <div>{{docSelector.content}}</div>
+      <div class="priColor kindent kvflex">
+        <div class="klist" *ngFor="let item of docSelector | keyvalue">
+          <div>{{item.key}}</div>
+          <div> :<input value="{{item.value}}"></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class=" kcard secColor kround kvtable">
-  <div class=" kindent ">a</div>
-  <div class=" kindent ">a</div>
 </div>
